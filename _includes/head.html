@@ -1,0 +1,337 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+  <title>{{ page.title | site.title }}</title>
+  <meta name="generator" content="Jekyll v4.4.1" />
+  <meta property="og:title" content="Rinkose" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta property="og:description" content="{{ page.og_image | default: '/assets/img/logo.jpg' }}">
+  <link rel="canonical" href="http://localhost:4000/" />
+  <meta property="og:url" content="http://localhost:4000/" />
+  <meta property="og:site_name" content="Rinkose" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:title" content="Rinkose" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Rinkose","name":"Rinkose","url":"http://localhost:4000/"}</script>
+  <!-- End Jekyll SEO tag -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rinkose" />
+  <!-- <link rel="stylesheet" href="/assets/main.css"> -->
+  <link rel="stylesheet" href="{{ '/assets/css/tailwind.css' | relative_url }}">
+
+  <style>
+    /* *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } */
+
+    :root {
+      --ink:       #111827; /* gray-900 */
+      --ink-muted: #6b7280; /* gray-500 */
+      --ink-faint: #9ca3af; /* gray-400 */
+      --paper:     #f3f4f6; /* gray-100 */
+      --rule:      rgba(17,24,39,0.12); /* gray-900/12 */
+      --green:     #166534; /* green-800 */
+      --coral:     #991b1b; /* red-800 */
+      --font:      -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+    }
+
+    /* body {
+      font-family: var(--font);
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4rem 2rem;
+    } */
+
+    /* --------------------------------------------------------------------- */
+    /* General */
+    /* --------------------------------------------------------------------- */
+
+    .widget {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .widget-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .widget-narrative {
+      margin-bottom: 12px;
+    }
+
+    .cell-chg {
+      font-family: var(--font-mono);
+    }
+
+    .cell-vs.positive { color: var(--green); }
+    .cell-vs.negative { color: var(--coral); }
+    .cell-vs.neutral  { color: var(--ink-faint); }
+
+    .cell-chg.positive { color: var(--green); }
+    .cell-chg.negative { color: var(--coral); }
+    .cell-chg.neutral  { color: var(--ink-faint); }
+
+    .highlight { background-color: #ffe84f; }
+
+    /* --------------------------------------------------------------------- */
+    /* Overview widget */
+    /* --------------------------------------------------------------------- */
+
+    /* Masthead */
+    .masthead {
+      margin-bottom: 1rem;
+    }
+
+    .masthead-title {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .masthead-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 6px;
+    }
+
+    /* Summary row */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .summary-card {
+      padding: 0 20px 0 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .summary-card:first-child { padding-left: 0; }
+    .summary-card:last-child { border-right: none; }
+    .summary-card:not(:first-child) { padding-left: 20px; }
+
+    .summary-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .summary-value {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .summary-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+    }
+
+    .summary-sub.positive { color: var(--green); }
+
+    /* --------------------------------------------------------------------- */
+    /* Index table */
+    /* --------------------------------------------------------------------- */
+
+    .index-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .index-table thead th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      font-weight: 400;
+      padding: 0 0 3px;
+    }
+
+    .index-table thead th:not(:first-child) { text-align: right; }
+
+    .index-table tbody td {
+      vertical-align: middle;
+      padding: 0;
+    }
+
+    .index-table tbody tr:last-child td { border-bottom: none; }
+
+    .index-table tbody td:not(:first-child) { text-align: right; }
+
+    .cell-ticker {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cell-name {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-left: 8px;
+    }
+
+    .summary-widget .cell-chg {
+      font-size: 12px;
+    }
+
+    .cell-vs {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
+      .summary-card:nth-child(2) { border-right: none; }
+      .summary-card:nth-child(3) { padding-left: 0; border-right: 1px solid var(--rule); }
+    }
+
+    /* --------------------------------------------------------------------- */
+    /* Sector widget */
+    /* --------------------------------------------------------------------- */
+
+    .sector-widget {
+      font-family: var(--font);
+      color: var(--ink);
+    }
+
+    .sector-widget table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .sector-widget th {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding: 8px 0 5px;
+      text-align: left;
+    }
+
+    .sector-widget th.r {
+      text-align: right;
+    }
+
+    .sector-widget td {
+      font-size: 14px;
+      color: var(--ink);
+      padding: 2px 0;
+    }
+
+    .sector-widget td.r {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .sector-widget .rk {
+      font-size: 10px;
+      color: var(--ink-faint);
+      font-family: var(--font-mono);
+    }
+
+    .sector-widget .pos { color: var(--green); }
+    .sector-widget .neg { color: var(--coral); }
+
+    /* --------------------------------------------------------------------- */
+    /* Stock movers widget — aligned to system design */
+    /* --------------------------------------------------------------------- */
+
+    .movers-widget {
+      font-family: var(--font);
+      color: var(--ink);
+    }
+
+    .movers-widget .row2 {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 1.25rem;
+    }
+
+    .movers-widget .half {
+      flex: 1;
+    }
+
+    .movers-widget .sec-h {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .movers-widget .sec-h.gain { color: var(--green); }
+    .movers-widget .sec-h.loss { color: var(--coral); }
+
+    .movers-widget .mover-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .movers-widget .mover-row:first-of-type {
+      border-top: none;
+    }
+
+    .movers-widget .mover-row > div {
+      flex: 1;
+      text-align: right;
+    }
+
+    .movers-widget .mover-row > div:first-child {
+      text-align: left;
+      min-width: 60%;
+    }
+
+    .movers-widget .mover-row > div:last-child {
+      text-align: right;
+    }
+
+    .movers-widget .det {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+      display: inline-block;
+    }
+
+    .movers-widget .chg {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .movers-widget .price {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    /* Movers: two tables side by side */
+    .movers-tables {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .movers-tables table {
+      flex: 1;
+    }
+
+    .movers-widget .chg.positive { color: var(--green); }
+    .movers-widget .chg.negative { color: var(--coral); }
+  </style>
+</head>

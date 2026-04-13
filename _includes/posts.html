@@ -1,0 +1,39 @@
+<div class="grid grid-cols-1 gap-6">
+  <article class="pt-14 pb-4 mb-2 border-b">
+    {% include email.html %}
+
+    <h3 class="mt-14 text-semibold">Ankstesnės apžvalgos</h3>
+  </article>
+
+  {% for post in site.posts %}
+    <article>
+      <a
+        class="text-l text-gray-900 hover:underline"
+        href="{{ post.url | relative_url }}"
+      >
+        {{ post.title }}
+      </a>
+
+      {% assign start = post.week_start | date: "%Y-%m-%d" %}
+      {% assign end = post.week_end | date: "%Y-%m-%d" %}
+
+      {% assign start_month_index = start | date: "%-m" | minus: 1 %}
+      {% assign end_month_index = end | date: "%-m" | minus: 1 %}
+
+      {% assign start_month = site.months.lt[start_month_index] %}
+      {% assign end_month = site.months.lt[end_month_index] %}
+
+      {% assign start_day = start | date: "%-d" %}
+      {% assign end_day = end | date: "%-d" %}
+      {% assign year = start | date: "%Y" %}
+
+      <p class="text-[11px] text-gray-900 mt-[2px] tracking-wide">
+        {% if start_month_index == end_month_index %}
+        {{ year }} m. {{ start_month }} {{ start_day }} - {{ end_day }} d.
+        {% else %}
+        {{ year }} m. {{ start_month }} {{ start_day }} - {{ end_month }} {{ end_day }}
+        {% endif %}
+      </p>
+    </article>
+  {% endfor %}
+</div>
