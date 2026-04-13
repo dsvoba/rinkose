@@ -1,5 +1,28 @@
-_site
-.sass-cache
-.jekyll-cache
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# Build output
+_site/
+assets/css/*.css
+assets/css/*.css.map
+
+# Jekyll
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-vendor
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+
+# Ruby / Bundler
+.bundle/
+vendor/
